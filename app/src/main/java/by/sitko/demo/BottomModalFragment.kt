@@ -31,7 +31,16 @@ class BottomModalFragment : BottomSheetDialogFragment() {
             val bottomSheet =
                 dialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as FrameLayout
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-            bottomSheetBehavior.peekHeight = binding.root.height / 2
+
+            val screenHeight = requireActivity().window.decorView.height
+            val listHeight = binding.root.height
+
+            if (screenHeight / 2 > listHeight) {
+                bottomSheetBehavior.peekHeight = listHeight
+            } else {
+                bottomSheetBehavior.peekHeight = screenHeight / 2
+            }
+
             bottomSheet.parent.requestLayout()
         }
         return binding.root

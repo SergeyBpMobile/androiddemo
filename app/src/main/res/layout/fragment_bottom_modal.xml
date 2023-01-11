@@ -11,9 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_behavior="by.sitko.demo.LockableBottomSheetBehavior"
-        app:layout_keyline="@integer/material_motion_duration_medium_2">
+        android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
