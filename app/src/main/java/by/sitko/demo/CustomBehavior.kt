@@ -94,4 +94,6 @@ class LockableBottomSheetBehavior<V : View> : BottomSheetBehavior<V> {
             false
         }
     }
+
+    inner class ViewDragHelper
 }

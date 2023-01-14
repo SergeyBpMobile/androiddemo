@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.core.view.isGone
 import by.sitko.demo.adapter.RecyclerAdapter
 import by.sitko.demo.databinding.FragmentBottomModalBinding
 import by.sitko.demo.model.TextItem
@@ -31,7 +32,17 @@ class BottomModalFragment : BottomSheetDialogFragment() {
             val bottomSheet =
                 dialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as FrameLayout
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-            bottomSheetBehavior.peekHeight = binding.root.height / 2
+
+            val screenHeight = requireActivity().window.decorView.height
+            val listHeight = 1000
+
+
+            if (screenHeight / 2 > listHeight) {
+                bottomSheetBehavior.peekHeight = listHeight
+            } else {
+                bottomSheetBehavior.peekHeight = screenHeight
+            }
+
             bottomSheet.parent.requestLayout()
         }
         return binding.root
