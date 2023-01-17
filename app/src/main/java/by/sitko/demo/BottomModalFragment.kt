@@ -34,15 +34,15 @@ class BottomModalFragment : BottomSheetDialogFragment() {
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
 
             val screenHeight = requireActivity().window.decorView.height
-            val listHeight = 1000
-
+            val listHeight = binding.root.height / 2
+            binding.topView.isGone = true
 
             if (screenHeight / 2 > listHeight) {
                 bottomSheetBehavior.peekHeight = listHeight
             } else {
                 bottomSheetBehavior.peekHeight = screenHeight
             }
-
+            bottomSheetBehavior.addSheetCallback(binding.topView)
             bottomSheet.parent.requestLayout()
         }
         return binding.root
